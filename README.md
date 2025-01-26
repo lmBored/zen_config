@@ -1,1 +1,7 @@
-# zen_config
+# additional addons
+
++ Betterfox
++ Sidebery
++ Ublock
++ Stylus
+
