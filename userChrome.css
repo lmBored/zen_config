@@ -1,0 +1,731 @@
+/*============================================================================================*/
+/* MAIN BROWSER */
+
+/* Browser Border */
+
+#nav-bar {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+#tabbrowser-tabpanels .browserSidebarContainer {
+  border-radius: 15px !important;
+  border: 3px solid rgba(0, 0, 0, 0) !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  transition: border 0.3s ease;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  clip-path: circle(80%) !important;
+}
+
+#tabbrowser-tabpanels .browserSidebarContainer:not([zen-split]):not([zen-split="false"]):hover {
+  border-radius: 15px !important;
+  border: 3px solid var(--zen-colors-border) !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  clip-path: circle(80%) !important;
+}
+
+/* Tab splitting */
+
+/* The ~ (general sibling combinator) targets any .browserSidebarContainer elements that are siblings of #sidebar-box when #sidebar-box is hovered. */
+/* It will apply the styles to .browserSidebarContainer only when #sidebar-box is hovered. */
+/* Siblings mean they share the same parents */
+#sidebar-box:hover ~ #tabbrowser-tabpanels .browserSidebarContainer[zen-split-anim="true"][zen-split="true"],
+#zen-sidebar-web-panel-wrapper:hover ~ #tabbrowser-tabpanels .browserSidebarContainer[zen-split-anim="true"][zen-split="true"] {
+  --zen-primary-color: rgba(0, 0, 0, 0);
+  border-radius: 15px !important;
+  border: 3px solid rgba(0, 0, 0, 0) !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  transition: border 0.3s ease;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  clip-path: circle(80%) !important;
+}
+
+#tabbrowser-tabpanels .deck-selected[zen-split-anim="true"][zen-split="true"] {
+  border-radius: 15px !important;
+  border: 3px solid var(--zen-colors-border) !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  clip-path: circle(80%) !important;
+}
+
+/*============================================================================================*/
+/* TOOL BAR : https://github.com/Naezr/zen-browser-css/tree/main/HiddenToolbar */
+
+/*------------------------------------
+ * toolbar on side
+ */
+
+/*------------------------------------------------*/
+/* Floating toolbar https://github.com/anaarkei/zen-floating-toolbar */
+@media (-moz-bool-pref: "zen.view.compact") {
+
+  #zen-appcontent-navbar-container {
+    padding: calc(var(--zen-element-separation) * 2) !important;
+    border: none !important;
+    background: none !important;
+    box-sizing: border-box;
+    box-shadow: none !important;
+  }
+
+  #nav-bar {
+    min-height: calc( var(--zen-toolbar-height) + 5px ) !important;
+  }
+
+  #nav-bar,
+  #PersonalToolbar {
+    background: var(--zen-colors-tertiary) !important;
+    border-radius: var(--zen-border-radius);
+    border: 2px solid var(--zen-colors-border) !important;
+  }
+
+  #PersonalToolbar {
+    margin-top: var(--zen-element-separation);
+  }
+
+  #PersonalToolbar,
+  .bookmark-item {
+    padding: var(--zen-element-separation) !important;
+  }
+
+}
+
+/* Enable compact toolbar, similar to Smaller Compact Mode by n7itro */
+@media (-moz-bool-pref: "zen.view.compact") {
+  #nav-bar,
+  #PersonalToolbar {
+    width: 75vw !important;
+    margin-left: calc( 12.5vw - var(--zen-element-separation) * 2) !important;
+  }
+}
+
+/* Increase space around edge of browser window and toolbar / tab bar */
+/* @media (-moz-bool-pref: "zen.view.compact") {
+  #main-window {
+    --zen-element-separation: 10px !important;
+  }
+  #PersonalToolbar,
+  .bookmark-item {
+    padding: calc( var(--zen-element-separation) / 2 ) !important;
+  }
+} */
+
+/* Merge bookmark bar with toolbar */
+/* @media (-moz-bool-pref: "zen.view.compact") {
+  #nav-bar {
+    border-radius: var(--zen-border-radius) var(--zen-border-radius) 0 0;
+  }
+  #PersonalToolbar {
+    border-radius: 0 0 var(--zen-border-radius) var(--zen-border-radius);
+    border-top-width: 0 !important;
+    margin-top: 0 !important;
+  }
+}
+ */
+/*============================================================================================*/
+/* FIND BAR */
+
+/*------------------------------------------------*/
+/* Text in the center */
+.browserContainer > findbar .findbar-textbox  {
+  border-radius: 10px !important;
+  text-align: center  !important;
+}
+
+/*============================================================================================*/
+/* URL BAR */
+
+#urlbar ::-moz-selection,
+.searchbar-textbox ::-moz-selection {
+  background-color: #209fb5 !important;
+  color: #fff !important;
+}
+
+/*------------------------------------------------*/
+/* Round border radius */
+
+#urlbar:not([open]) > #urlbar-background {
+  border-radius: 18px !important;
+}
+#urlbar[open] > #urlbar-background {
+  border-radius: 18px !important;
+}
+
+/*------------------------------------------------*/
+/* Remove line between website content and top bar */
+
+#navigator-toolbox {
+  border-bottom: var(--firefoxcss-top-bar-border-bottom-size) solid
+    var(--firefoxcss-top-bar-border-bottom-color) !important;
+}
+
+/*------------------------------------------------*/
+/* Remove the all tab and new tab button */
+#alltabs-button,
+#tabs-newtab-button {
+  display: none !important;
+}
+
+/*------------------------------------------------*/
+/* Remove the 3 dots from Alt Key */
+
+#titlebar #toolbar-menubar .titlebar-buttonbox-container{
+  display: none !important;
+}
+
+/*------------------------------------------------*/
+/* Move menu buttons to the left side */
+
+/* #nav-bar #PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+	order: 0 !important;
+} */
+
+/* Move green yellow red buttons to the right */
+
+/* #nav-bar .titlebar-buttonbox-container {
+  -moz-box-ordinal-group: 99 !important;
+	order: 99 !important;
+  margin-right: 10px !important;
+}
+
+toolbar:not([customizing]) > #nav-bar-overflow-button {
+  -moz-box-ordinal-group: 1 !important;
+	order: 1 !important;
+}
+
+toolbar:not([customizing]) > #nav-bar-customization-target {
+  -moz-box-ordinal-group: 2 !important;
+		order: 2 !important;
+}
+
+#appMenu-popup {
+  margin-inline: -244px !important;
+}
+
+#widget-overflow {
+	margin-inline: -320px !important;
+}   */
+
+/*------------------------------------------------*/
+/* Hide all buttons in active tab context menu except for split tab and extensions */
+
+#main-window #context_openANewTab,
+#main-window #context_reloadTab,
+#main-window #context_toggleMuteTab,
+#main-window #context_playTab,
+#main-window #context_pinTab,
+#main-window #context_duplicateTab,
+#main-window #context_bookmarkTab,
+#main-window #context_moveTabOptions,
+#main-window #context_reopenInContainer,
+#main-window #context_toggleToPrivateContainer,
+#main-window #context_selectAllTabs,
+#main-window #context_closeTab,
+#main-window #context_closeTabOptions,
+#main-window #context_undoCloseTab,
+#context_MoveTabToOtherWorkspace,
+#main-window #tabContextMenu menuseparator {
+    display: none !important;
+}
+
+/*============================================================================================*/
+/* EXTENSION */
+
+/* Make extensions looks minimal */
+
+#unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-text::before {
+    content: "• • •";
+    font-size: 15px;
+    visibility: visible !important;
+    display: block;
+    text-align: center;
+}
+
+#unified-extensions-panel #unified-extensions-view {
+    width: 270px !important;
+}
+
+#unified-extensions-view{
+    --uei-icon-size: 22px;
+    --firefoxcss-number-of-extensions-in-a-row: 4;
+}
+
+
+#unified-extensions-view .unified-extensions-item-menu-button.subviewbutton,
+#unified-extensions-view .unified-extensions-item-action-button .unified-extensions-item-contents{
+    display:none !important;
+}
+
+#unified-extensions-view .panel-subview-body {
+    padding: 10px !important;
+}
+
+#unified-extensions-view .unified-extensions-item .unified-extensions-item-icon, 
+#unified-extensions-view .unified-extensions-item .toolbarbutton-badge-stack {
+    margin-inline-end: 0px !important;
+}
+
+#unified-extensions-view #overflowed-extensions-list,
+#unified-extensions-view #unified-extensions-area,
+#unified-extensions-view .unified-extensions-list {
+    display: grid !important;
+    grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
+    justify-items:left !important;
+    align-items:left !important;
+}
+
+/*============================================================================================*/
+/* URL BAR */
+
+/* Make text in URL bar in the center */
+#nav-bar {
+    display: flex;
+    justify-content: center;
+}
+
+#main-window #urlbar {
+    z-index: 9999 !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    transition: width 0.3s ease, left 0.3s ease, margin-top 0.3s ease, margin-left 0.3s ease, margin-right 0.3s ease;
+}
+
+#main-window #urlbar[breakout][breakout-extend] {
+    opacity: 0.93 !important;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    left: 0;
+    right: 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10vh !important;
+    transition: width 0.3s ease, left 0.3s ease, margin-top 0.3s ease, margin-left 0.3s ease, margin-right 0.3s ease;
+}
+
+#urlbar-background,
+#urlbar-input-container {
+    --toolbarbutton-border-radius: calc(var(--urlbar-min-height) / 2);
+}
+
+#urlbar-input-container {
+    --urlbar-icon-border-radius: calc(var(--toolbarbutton-border-radius) - 1px);
+}
+
+#urlbar:not([focused]) #urlbar-input {
+    text-align: center !important;
+}
+
+#urlbar:not([breakout][breakout-extend]) #urlbar-input {
+    text-align: center !important;
+}
+
+/*------------------------------------------------*/
+/* Create visual dots on both sides */
+#identity-box::after,
+#page-action-buttons::before {
+  position: relative;
+  content: "•••";
+  pointer-events: none;
+  transition: opacity 100ms ease;
+  align-self: center;
+  font-size: 0.7em;
+}
+
+#identity-box::after,
+#page-action-buttons::before {
+  opacity: 0.2;
+}
+
+#identity-box::after {
+  transform: rotate(90deg);
+  left: 4px;
+}
+
+#page-action-buttons::before {
+  transform: rotate(-90deg);
+  right: 4px;
+}
+
+#identity-box:hover::after,
+#page-action-buttons:hover::before {
+  opacity: 0.2 !important;
+  transition: opacity 50ms ease;
+  pointer-events: none;
+}
+
+#identity-box[pageproxystate="invalid"]::after,
+#urlbar-input-container[pageproxystate="invalid"]
+  > #page-action-buttons::before {
+  opacity: 0 !important;
+  transition: opacity 50ms ease;
+}
+
+/* Linux changes for visual dots */
+@media (-moz-platform: linux) {
+  #identity-box::after,
+  #page-action-buttons::before {
+    content: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg fill="%23FFFFFF" width="11px" height="11px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M20.25 16c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25zM20.25 27c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25zM20.25 5c0 2.347-1.903 4.25-4.25 4.25s-4.25-1.903-4.25-4.25c0-2.347 1.903-4.25 4.25-4.25s4.25 1.903 4.25 4.25z"></path></svg>');
+    transform: none;
+    font-size: unset;
+  }
+
+  #page-action-buttons::before {
+    right: 2px;
+  }
+
+  #identity-box::after {
+    left: 2px;
+  }
+}
+
+#identity-box[pageproxystate="valid"].notSecureText > .identity-box-button,
+#identity-box[pageproxystate="valid"].extensionPage > .identity-box-button,
+#identity-box[pageproxystate="valid"].chromeUI > .identity-box-button,
+#urlbar-label-box,
+#urlbar-zoom-button {
+  background-color: var(--firefoxcss-item-bg-color) !important;
+}
+
+#urlbar-zoom-button:hover {
+  background-color: var(--firefoxcss-urlbar-zoom-button) !important;
+}
+
+#urlbar-input-container #identity-box > .identity-box-button,
+#tracking-protection-icon-container,
+#urlbar-go-button,
+#page-action-buttons .urlbar-page-action,
+#notification-popup-box {
+  border-radius: 8px !important;
+}
+
+#urlbar-go-button,
+#tracking-protection-icon-container
+{
+  display: none !important;
+}
+
+/*============================================================================================*/
+/* SIDE BAR */
+/* Stolen https://www.reddit.com/r/FirefoxCSS/comments/1h2fmno/comment/lzjjazy/ */
+
+/*=============================================*/
+
+/* HIDE TABS TOOLBAR */
+
+/* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/hide_tabs_toolbar_v2.css made available under Mozilla Public License v. 2.0
+See the above repository for updates as well as full license text. */
+
+/* This requires Firefox 133+ to work */
+
+@media (-moz-bool-pref: "sidebar.verticalTabs"){
+  #sidebar-main{
+	visibility: collapse;
+  }
+}
+
+@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"){
+  #nav-bar > .titlebar-buttonbox-container{
+	order: -1 !important;
+	> .titlebar-buttonbox{
+  	flex-direction: row-reverse;
+	}
+  }
+}
+
+/* Hide all tabs and workspace button */
+@media not (-moz-bool-pref: "sidebar.verticalTabs"){
+/*   #TabsToolbar{
+	visibility: collapse;
+  } */
+  tab[pending]:not([pinned]) {
+    visibility: collapse;
+  }
+  #vertical-pinned-tabs-container #tabbrowser-tabs > *:is(#zen-essentials-container, #vertical-pinned-tabs-container, #zen-current-workspace-indicator, #vertical-pinned-tabs-container-separator) {
+    visibility: visible !important;
+  }
+  :root[sizemode="fullscreen"] #nav-bar > .titlebar-buttonbox-container{
+	display: flex !important;
+  }
+  :root[tabsintitlebar] #toolbar-menubar:not([autohide="false"]) ~ #nav-bar{
+	> .titlebar-buttonbox-container{
+  	display: flex !important;
+	}
+	:root[sizemode="normal"] & {
+  	> .titlebar-spacer{
+    	display: flex !important;
+  	}
+	}
+	:root[sizemode="maximized"] & {
+  	> .titlebar-spacer[type="post-tabs"]{
+    	display: flex !important;
+  	}
+  	@media (-moz-bool-pref: "userchrome.force-window-controls-on-left.enabled"),
+    	(-moz-gtk-csd-reversed-placement),
+    	(-moz-platform: macos){
+    	> .titlebar-spacer[type="post-tabs"]{
+      	display: none !important;
+    	}
+    	> .titlebar-spacer[type="pre-tabs"]{
+      	display: flex !important;
+    	}
+  	}
+	}
+  }
+}
+
+/*============================================================================================*/
+/* SIDE PANEL */
+/* Put side panel on the right when pinned */
+
+/* #zen-sidebar-web-panel-wrapper:not(:has(#zen-sidebar-web-panel[pinned="true"])) {
+  z-index: 999 !important;
+} */
+
+#zen-sidebar-web-panel {
+  border-radius: 15px !important;
+  border: 3px solid rgba(0, 0, 0, 0) !important;
+  margin-left: -1px !important;
+  transition: border 0.3s ease;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  clip-path: circle(80%) !important;
+}
+
+#zen-sidebar-web-panel:hover {
+  border-radius: 15px !important;
+  border: 3px solid #7dc4e4 !important;
+  margin-left: -1px !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+}
+
+/* #tabbrowser-tabbox:has(#zen-sidebar-web-panel[pinned="true"]) {
+    position: relative !important;
+}
+#zen-sidebar-web-panel[pinned="true"] {
+    right: var(--zen-element-separation) !important;
+    animation: none !important;
+    opacity: 100 !important;
+}
+#zen-sidebar-web-panel-wrapper:has(#zen-sidebar-web-panel[hidden="true"]) {
+    display: none !important;
+}
+#zen-sidebar-web-panel-wrapper:not(:has(#zen-sidebar-web-panel[hidden="true"])) {
+    display: flex !important;
+} */
+
+/*============================================================================================*/
+
+/* SIDEBERY */
+
+#sidebar-box {
+  --bar-width: 36px;
+  --margin-right-not-hovered: 2px;
+  position: relative !important;
+  overflow-x: hidden !important;
+  margin-top: 3px;
+  margin-right: var(--margin-right-not-hovered) !important;
+  min-width: var(--bar-width) !important;
+  max-width: var(--bar-width) !important;
+  z-index: 999;
+  border-radius: 15px !important;
+/*   transition: all 0.25s ease-in-out; */
+  clip-path: inset(0 0 0 0);
+  transition: all 0.18s cubic-bezier(0.5, 0, 0.75, 1);
+  border: 2px solid rgba(204, 204, 204, 0.3) !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  transform: translateX(0); /* Default state */
+}
+
+#sidebar-box:hover {
+  --expanded-width: 270px;
+  position: relative !important;
+  margin-right: calc(
+    calc(var(--expanded-width) - var(--bar-width)) * -1 + var(--margin-right-not-hovered)
+  ) !important;
+ 	z-index: 999;
+  border-radius: 15px !important;
+  min-width: var(--expanded-width) !important;
+  max-width: var(--expanded-width) !important;
+  border: 3px solid #7dc4e4 !important;
+  opacity: 0.93; /* Make sidebery semi-transparent */
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+}
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+  display: none !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+  display: none;
+}
+
+/* make the little ribbon of color on the edge more prominent for multi-account containers */
+.contextual-identity-marker {
+  width: 40px !important;
+  left: 0;
+  opacity: 0.6;
+}
+
+/*============================================================================================*/
+
+/* Catppuccin Macchiato Sapphire userChrome.css*/
+
+@media (prefers-color-scheme: dark) {
+
+  :root {
+    --zen-colors-primary: #363a4f !important;
+    --zen-primary-color: #7dc4e4 !important;
+    --zen-colors-secondary: #363a4f !important;
+    --zen-colors-tertiary: #1e2030 !important;
+    --zen-colors-border: #7dc4e4 !important;
+    --toolbarbutton-icon-fill: #7dc4e4 !important;
+    --lwt-text-color: #cad3f5 !important;
+    --toolbar-field-color: #cad3f5 !important;
+    --tab-selected-textcolor: rgb(164, 203, 236) !important;
+    --toolbar-field-focus-color: #cad3f5 !important;
+    --toolbar-color: #cad3f5 !important;
+    --newtab-text-primary-color: #cad3f5 !important;
+    --arrowpanel-color: #cad3f5 !important;
+    --arrowpanel-background: #24273a !important;
+    --sidebar-text-color: #cad3f5 !important;
+    --lwt-sidebar-text-color: #cad3f5 !important;
+    --lwt-sidebar-background-color: #181926 !important;
+    --toolbar-bgcolor: #363a4f !important;
+    --newtab-background-color: #24273a !important;
+    --zen-themed-toolbar-bg: #1e2030 !important;
+    --zen-main-browser-background: #1e2030 !important;
+  }
+
+  #permissions-granted-icon{
+    color: #1e2030 !important;
+  }
+
+  .sidebar-placesTree {
+    background-color: #24273a !important;
+  }
+
+  #zen-workspaces-button {
+    background-color: #24273a !important;
+  }
+
+  #TabsToolbar {
+    background-color: #1e2030 !important;
+  }
+
+  #urlbar-background {
+    background-color: #414559 !important; /* 24273a*/
+  }
+
+  .content-shortcuts {
+    background-color: #24273a !important;
+    border-color: #7dc4e4 !important;
+  }
+
+  .urlbarView-url {
+    color: #7dc4e4 !important;
+  }
+
+  #zenEditBookmarkPanelFaviconContainer {
+    background: #181926 !important;
+  }
+
+  toolbar .toolbarbutton-1 {
+    &:not([disabled]) {
+      &:is([open], [checked]) > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack){
+        fill: #181926;
+      }
+    }
+  }
+
+  .identity-color-blue {
+    --identity-tab-color: #8aadf4 !important;
+    --identity-icon-color: #8aadf4 !important;
+  }
+
+  .identity-color-turquoise {
+    --identity-tab-color: #8bd5ca !important;
+    --identity-icon-color: #8bd5ca !important;
+  }
+
+  .identity-color-green {
+    --identity-tab-color: #a6da95 !important;
+    --identity-icon-color: #a6da95 !important;
+  }
+
+  .identity-color-yellow {
+    --identity-tab-color: #eed49f !important;
+    --identity-icon-color: #eed49f !important;
+  }
+
+  .identity-color-orange {
+    --identity-tab-color: #f5a97f !important;
+    --identity-icon-color: #f5a97f !important;
+  }
+
+  .identity-color-red {
+    --identity-tab-color: #ed8796 !important;
+    --identity-icon-color: #ed8796 !important;
+  }
+
+  .identity-color-pink {
+    --identity-tab-color: #f5bde6 !important;
+    --identity-icon-color: #f5bde6 !important;
+  }
+
+  .identity-color-purple {
+    --identity-tab-color: #c6a0f6 !important;
+    --identity-icon-color: #c6a0f6 !important;
+  }
+}
+
+
+
+/*
+/* Sidebery Settings * /
+:root {
+    --sidebar-shown: 250px; /* size of pinned tabs * /
+    --sidebar-width: 250px; /* fixed width of panel * /
+    --sidebar-height: 100vh; /* fixed height of panel * /
+}
+ 
+/* Sidebery Auto-hiding Sidebar * /
+/* hides panel by pushing it off screen * /
+#main-window:not([extradragspace="true"])
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not([hidden]) {
+    position: fixed;
+    left: calc(-1 * var(--sidebar-width) + var(--sidebar-shown));
+    z-index: 1;
+    transition: all 0.2s ease-in-out; 
+}
+ 
+/* moves panel back to 0 on hover * /
+#main-window:not([extradragspace="true"])
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:not([hidden]):hover {
+    position: fixed;
+    left: 100px;
+    z-index: 1;
+}
+ 
+/* fixed width of each tab. does not change * /
+#main-window:not([extradragspace="true"])
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"],
+#main-window:not([extradragspace="true"]) 
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] #sidebar {
+  width: var(--sidebar-width) !important;
+}
+ 
+/* adjust if your sidebery is not tall enough * /
+#main-window:not([extradragspace="true"])[inFullscreen]
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"],
+#main-window:not([extradragspace="true"])
+#sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
+    height: var(--sidebar-height);
+}
+*/
