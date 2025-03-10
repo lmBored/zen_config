@@ -1,6 +1,16 @@
 /*============================================================================================*/
 /* MAIN BROWSER */
 
+/* Hide extension name in url bar that takes up 70% url bar in new tab page */
+#urlbar #identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+
+/* Remove space on urlbar https://www.reddit.com/r/firefox/s/CZ93aKUt3B */
+.vertical-spacer {
+  display: none;
+}
+
 /* Browser Border */
 
 #nav-bar {
@@ -12,7 +22,7 @@
   border-radius: 15px !important;
   border: 3px solid rgba(0, 0, 0, 0) !important;
   z-index: 0 !important;
-  overflow: hidden !important;
+  overflow: hidden !important
   transition: border 0.3s ease;
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
   clip-path: circle(80%) !important;
@@ -23,6 +33,7 @@
   border: 3px solid var(--zen-colors-border) !important;
   z-index: 0 !important;
   overflow: hidden !important;
+  transition: border 0.3s ease;
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
   clip-path: circle(80%) !important;
 }
@@ -49,6 +60,7 @@
   border: 3px solid var(--zen-colors-border) !important;
   z-index: 0 !important;
   overflow: hidden !important;
+  transition: border 0.3s ease;
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
   clip-path: circle(80%) !important;
 }
@@ -60,10 +72,82 @@
  * toolbar on side
  */
 
+/* fix workspaces icons */
+toolbarbutton{
+	padding: 0.1em !important;
+}
+
+#unified-extensions-button{
+	margin-left: 0.25em !important;
+	image{
+	border-radius: 100px !important;
+		scale: 1.2;
+	}
+}
+
+/* Decrease height and put in middle in compact mode */
+[zen-compact-mode="true"]{
+	#titlebar{
+	  height: 90% !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+    opacity: 0.96 !important;
+    border-radius: 15px !important;
+    border: 1.8px solid var(--zen-colors-border) !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    transition: border 0.3s ease;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+    clip-path: circle(80%) !important;
+	}
+}
+
+/* Smoother transition */
+[zen-compact-mode="true"] #navigator-toolbox{
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) !important;
+}
+
+/* .tabbrowser-tab, #tabbrowser-arrowscrollbox{
+	transition: all 0.5s ease-in-out !important;
+}
+
+#zen-sidebar-icons-wrapper{
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out !important;
+	
+	&:hover{
+		opacity: 1 !important;
+	}
+}
+
+.unified-extensions-item-action-button{
+	.unified-extensions-item-message-deck{
+		display: none !important;
+	}
+}
+ */
+
+/* Transition when switching tabs */
+/* #tabbrowser-tabpanels hbox{
+	transition: all 0.2s ease-out !important;
+/* 	transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.35) !important; *
+/* 	scale: 0.8 !important; *
+	opacity: 0;
+	left: -5vw;
+}
+#tabbrowser-tabpanels hbox.deck-selected{
+/* 	scale: 1 !important; *
+	opacity: 1 !important;
+	left: 0 !important;
+}
+
+#browser .browserContainer{
+	transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.35) !important;
+} */
+
 /*------------------------------------------------*/
 /* Floating toolbar https://github.com/anaarkei/zen-floating-toolbar */
 @media (-moz-bool-pref: "zen.view.compact") {
-
   #zen-appcontent-navbar-container {
     padding: calc(var(--zen-element-separation) * 2) !important;
     border: none !important;
@@ -71,16 +155,28 @@
     box-sizing: border-box;
     box-shadow: none !important;
   }
-
+  
   #nav-bar {
     min-height: calc( var(--zen-toolbar-height) + 5px ) !important;
   }
+  
+/*   #zen-appcontent-navbar-container[zen-has-hover="true"] {
+    padding: calc(var(--zen-element-separation) * 2) !important;
+    border: none !important;
+    background: none !important;
+    box-sizing: border-box;
+    box-shadow: none !important;
+  }
+
+  #nav-bar[zen-has-hover="true"] {
+    min-height: calc( var(--zen-toolbar-height) + 5px ) !important;
+  } */
 
   #nav-bar,
   #PersonalToolbar {
     background: var(--zen-colors-tertiary) !important;
     border-radius: var(--zen-border-radius);
-    border: 2px solid var(--zen-colors-border) !important;
+    border: 1.8px solid var(--zen-colors-border) !important;
   }
 
   #PersonalToolbar {
@@ -91,7 +187,6 @@
   .bookmark-item {
     padding: var(--zen-element-separation) !important;
   }
-
 }
 
 /* Enable compact toolbar, similar to Smaller Compact Mode by n7itro */
@@ -214,7 +309,7 @@ toolbar:not([customizing]) > #nav-bar-customization-target {
 /*------------------------------------------------*/
 /* Hide all buttons in active tab context menu except for split tab and extensions */
 
-#main-window #context_openANewTab,
+/* #main-window #context_openANewTab,
 #main-window #context_reloadTab,
 #main-window #context_toggleMuteTab,
 #main-window #context_playTab,
@@ -231,12 +326,16 @@ toolbar:not([customizing]) > #nav-bar-customization-target {
 #context_MoveTabToOtherWorkspace,
 #main-window #tabContextMenu menuseparator {
     display: none !important;
-}
+} */
 
 /*============================================================================================*/
 /* EXTENSION */
 
 /* Make extensions looks minimal */
+
+#unified-extensions-panel {
+    padding: 10px !important;
+}
 
 #unified-extensions-view #unified-extensions-manage-extensions .toolbarbutton-text::before {
     content: "• • •";
@@ -247,11 +346,11 @@ toolbar:not([customizing]) > #nav-bar-customization-target {
 }
 
 #unified-extensions-panel #unified-extensions-view {
-    width: 270px !important;
+    width: 250px !important;
 }
 
 #unified-extensions-view{
-    --uei-icon-size: 22px;
+    --uei-icon-size: 25px;
     --firefoxcss-number-of-extensions-in-a-row: 4;
 }
 
@@ -275,8 +374,8 @@ toolbar:not([customizing]) > #nav-bar-customization-target {
 #unified-extensions-view .unified-extensions-list {
     display: grid !important;
     grid-template-columns: repeat(var(--firefoxcss-number-of-extensions-in-a-row),auto);
-    justify-items:left !important;
-    align-items:left !important;
+    justify-items: center !important;
+    align-items: center !important;
 }
 
 /*============================================================================================*/
@@ -443,6 +542,7 @@ See the above repository for updates as well as full license text. */
 /*   #TabsToolbar{
 	visibility: collapse;
   } */
+/*  Unchcomment this to hide inactive tab  */
   tab[pending]:not([pinned]) {
     visibility: collapse;
   }
@@ -500,6 +600,7 @@ See the above repository for updates as well as full license text. */
   border-radius: 15px !important;
   border: 3px solid #7dc4e4 !important;
   margin-left: -1px !important;
+  transition: border 0.3s ease;
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
 }
 
@@ -520,10 +621,10 @@ See the above repository for updates as well as full license text. */
 
 /*============================================================================================*/
 
-/* SIDEBERY */
-
-#sidebar-box {
+/* ===== SIDEBERY ===== */
+#sidebar-box.chromeclass-extrachrome[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
   --bar-width: 36px;
+/*   --bar-width: 270px; */
   --margin-right-not-hovered: 2px;
   position: relative !important;
   overflow-x: hidden !important;
@@ -541,16 +642,51 @@ See the above repository for updates as well as full license text. */
   transform: translateX(0); /* Default state */
 }
 
-#sidebar-box:hover {
+#sidebar-box.chromeclass-extrachrome[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:hover {
   --expanded-width: 270px;
-  position: relative !important;
+/*   position: relative !important; */
   margin-right: calc(
     calc(var(--expanded-width) - var(--bar-width)) * -1 + var(--margin-right-not-hovered)
   ) !important;
- 	z-index: 999;
-  border-radius: 15px !important;
+/*  	z-index: 999; */
+/*   border-radius: 15px !important; */
   min-width: var(--expanded-width) !important;
   max-width: var(--expanded-width) !important;
+  border: 3px solid #7dc4e4 !important;
+  opacity: 0.93; /* Make sidebery semi-transparent */
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+}
+
+/* ===== Bookmarks Sidebar Styles ===== */
+#sidebar-box.chromeclass-extrachrome[sidebarcommand="viewBookmarksSidebar"] {
+  --bmbar-width: 270px;
+  --bmmargin-right-not-hovered: 2px;
+  position: relative !important;
+  overflow-x: hidden !important;
+  margin-top: 3px;
+  margin-right: var(--bmmargin-right-not-hovered) !important;
+  min-width: var(--bmbar-width) !important;
+  max-width: var(--bmbar-width) !important;
+  z-index: 999;
+  border-radius: 15px !important;
+/*   transition: all 0.25s ease-in-out; */
+  clip-path: inset(0 0 0 0);
+  transition: all 0.18s cubic-bezier(0.5, 0, 0.75, 1);
+  border: 2px solid rgba(204, 204, 204, 0.3) !important;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
+  transform: translateX(0); /* Default state */
+}
+
+#sidebar-box.chromeclass-extrachrome[sidebarcommand="viewBookmarksSidebar"]:hover {
+  --expandedbmbar-width: 270px;
+  position: relative !important;
+  margin-right: calc(
+    calc(var(--expandedbmbar-width) - var(--bmbar-width)) * -1 + var(--bmmargin-right-not-hovered)
+  ) !important;
+ 	z-index: 999;
+  border-radius: 15px !important;
+  min-width: var(--expandedbmbar-width) !important;
+  max-width: var(--expandedbmbar-width) !important;
   border: 3px solid #7dc4e4 !important;
   opacity: 0.93; /* Make sidebery semi-transparent */
   box-shadow: 0 0 10px 5px rgba(0,0,0,0.5) !important;
@@ -615,9 +751,10 @@ See the above repository for updates as well as full license text. */
     background-color: #24273a !important;
   }
 
-  #TabsToolbar {
+/* let me be able to change toolbar color manually with UI */
+/*   #TabsToolbar {
     background-color: #1e2030 !important;
-  }
+  } */
 
   #urlbar-background {
     background-color: #414559 !important; /* 24273a*/
