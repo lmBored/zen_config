@@ -41,9 +41,9 @@
 /* ------------------------------------- */
 /* adjustments */
 
-#root.root {--tabs-indent: 16px;}
+#root.root {--tabs-indent: 18px;}
 #root.root {--tabs-audio-btn-width: 32px;}
-#root.root {--tabs-inner-gap: 4px;}
+#root.root {--tabs-inner-gap: 5px;}
 
 /* ------------------------------------- */
 /* ROOT */
